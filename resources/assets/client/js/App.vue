@@ -1,0 +1,37 @@
+<template>
+<f7-app :params="f7params">
+    <f7-view main url="/"></f7-view>
+</f7-app>
+</template>
+
+<script>
+import HomePage from '*/components/Home.vue';
+import AboutPage from '*/components/About.vue';
+import LoginPage from '*/components/Login.vue';
+
+export default {
+    data() {
+        return {
+            // app params
+            f7params: {
+                name: 'My App',
+                id: 'com.myapp.test',
+                // specify routes for app
+                routes: [{
+                        path: '/',
+                        component: HomePage,
+                    },
+                    {
+                        path: '/about/',
+                        component: AboutPage,
+                    },
+                    {
+                        path: '/login/',
+                        component: LoginPage,
+                    },
+                ],
+            }
+        };
+    },
+}
+</script>
