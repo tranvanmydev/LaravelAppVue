@@ -1,6 +1,6 @@
 <template>
 <f7-page ptr @ptr:refresh="loadMore">
-    <f7-navbar title="Pull To Refresh"></f7-navbar>
+    <f7-navbar title="My App" back-link="Back" :sliding="false"></f7-navbar>
     <f7-list media-list>
         <f7-list-item v-for="(item, index) in items" :key="index" :title="item.title" :subtitle="item.author">
             <img slot="media" :src="item.cover" width="44" />
@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex';
+
 export default {
     data() {
         return {
@@ -41,6 +43,14 @@ export default {
             authors: ['Beatles', 'Queen', 'Michael Jackson', 'Red Hot Chili Peppers'],
         };
     },
+    computed: {
+        ...mapState({
+            storeHome: state => state.storeHome
+        })
+    },
+    created() {
+        this.setNavigation();
+    },
     methods: {
         loadMore(done) {
             const self = this;
@@ -59,6 +69,12 @@ export default {
                 done();
             }, 1000);
         },
+
+        async setNavigation() {
+            await this.$store.dispatch('actionSetNavigation', {
+                vue: this,
+            });
+        }
     },
 };
 </script>
