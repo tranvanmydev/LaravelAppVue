@@ -5,11 +5,12 @@
 </template>
 
 <script>
-import HomePage from '*/components/Home.vue';
+import HomePage from '*/components/home/views/Home.vue';
 import AboutPage from '*/components/About.vue';
 import LoginPage from '*/components/Login.vue';
 
 export default {
+    name: "App",
     data() {
         return {
             // app params
@@ -19,15 +20,15 @@ export default {
                 // specify routes for app
                 routes: [{
                         path: '/',
-                        component: HomePage,
+                        component: LoginPage,
                     },
                     {
                         path: '/about/',
                         component: AboutPage,
                     },
                     {
-                        path: '/login/',
-                        component: LoginPage,
+                        path: '/home/',
+                        component: HomePage,
                     },
                 ],
             }

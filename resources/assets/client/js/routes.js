@@ -1,4 +1,4 @@
-import HomePage from '*/components/Home.vue';
+import HomePage from '*/components/home/views/Home.vue';
 import AboutPage from '*/components/About.vue';
 import LoginPage from '*/components/Login.vue';
 
