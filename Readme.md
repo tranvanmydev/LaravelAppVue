@@ -1,5 +1,7 @@
 # The AppVue Project
 
+![Check CI And CD](https://github.com/tranvanmydev/LaravelAppVue/workflows/Check%20CI%20And%20CD/badge.svg?branch=develop)
+
 ## Requirements
 
 - [Laravel 6.x](https://laravel.com/docs/6.0#server-requirements)

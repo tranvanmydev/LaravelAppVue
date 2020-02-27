@@ -13,3 +13,7 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 .docker
+/public/swagger/*
+
+!/public/swagger/index.html
+!/public/swagger/swagger.json
