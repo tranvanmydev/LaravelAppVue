@@ -15,5 +15,4 @@ export default [
         path: '/login/',
         component: LoginPage,
     },
-        // ...
 ];
