@@ -7,7 +7,7 @@
 <script>
 import HomePage from '*/components/home/views/Home.vue';
 import AboutPage from '*/components/About.vue';
-import LoginPage from '*/components/Login.vue';
+import LoginPage from '*/components/auth/views/Login.vue';
 
 export default {
     name: 'App',
