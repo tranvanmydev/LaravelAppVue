@@ -1,0 +1,2460 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "GMT API documents",
+        "description": "This is api document of Group Management Tool",
+        "termsOfService": "",
+        "version": "1.0.0"
+    },
+    "tags": [
+        {
+            "name": "Authorization",
+            "description": "Group API Authentication"
+        },
+        {
+            "name": "Monthly Reports",
+            "description": "Group API Monthly Reports"
+        },
+        {
+            "name": "Profile",
+            "description": "Group API Profile"
+        },
+        {
+            "name": "Categories",
+            "description": "Group API Categories"
+        },
+        {
+            "name": "Target Months",
+            "description": "Group API Target Months"
+        },
+        {
+            "name": "Non-standard",
+            "description": "Group API Non-standard"
+        },
+        {
+            "name": "Chatwork Bots",
+            "description": "Group API Chatwork Bots"
+        },
+        {
+            "name": "Teams",
+            "description": "Group API Teams"
+        },
+        {
+            "name": "Members",
+            "description": "Group API Members"
+        },
+        {
+            "name": "Comments",
+            "description": "Group API Comments"
+        }
+    ],
+    "securityDefinitions": {
+        "ApiKeyAuth" : {
+            "name": "Authorization",
+            "in": "header",
+            "type": "apiKey"
+        }
+    },
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "paths": {
+        "/api/auth/login": {
+            "post": {
+                "description": "Return the access token for the authenticated user",
+                "tags": [
+                    "Authorization"
+                ],
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "token_type": "Bearer",
+                                "expires_in": 31536000,
+                                "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjU1NTMxNTM3YmUzNDhjMDEwZTZhYTM4N2ZlNzg3NzI0YjIzMjljZDEzNGRlMjBmMzlkZjFjZmUwYTUyZjYwZTQwZjNiMTYxMjEwY2NlNTcxIn0.eyJhdWQiOiIyIiwianRpIjoiNTU1MzE1MzdiZTM0OGMwMTBlNmFhMzg3ZmU3ODc3MjRiMjMyOWNkMTM0ZGUyMGYzOWRmMWNmZTBhNTJmNjBlNDBmM2IxNjEyMTBjY2U1NzEiLCJpYXQiOjE1NDgyMDY5ODMsIm5iZiI6MTU0ODIwNjk4MywiZXhwIjoxNTc5NzQyOTgzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.CqlglC3_en6rW9nxS2jwVejYjOgJmm_pYQmkGh08ra09AQoLtvLsq3Puuehkk7uEV6Rq8CEGcye-slB2e-BzBj5izNvPMCpnppf8R1zdWlDUW_tDJuW3Gwmouwicb2RML352VQTT7xfztNQG9NvPHA5C3Z5Jufu9FYVRy6JrUPhQ-SWfPKtvDtZ9nASyAbVYg2r9NWsPpztWDGubs9DkqrGH7Mf7D1Y-ybgZGr9aSX9Ift7PBwxQGMkcY9jqR8LD1855_wqJkNyXX0ouJDA6o9-eVaP92jCMJDD7I5uIiowJ-OXW6qQtKU_l_mMsmZrCdrl_r6wujtDOb4-btDikLJtEhzolah1B4_qO3PRuyias92NiciKT8F0eezZWDawLgDuy5U31IFXrPFCW8bq3ZuOKtDMHKFW3HJu2OQM4at08GhgUcES15e0veKFhDurIk32MkMAIxKlCeg28mQObUlDMktet9qlDSkcafBOtueJwoyFTTpuiE7aek9H2HUWUrqvM3Oz4D0SqfdsVenhvot9zKXQ_aq-cTSN4jYwUuQW7kStyEwcmvvonC6G5N1puBXXGBAvUgVgBdzE02qA2qEGAc5o4Jl-sX3l4FBwgsY8woiqftyBEXUkX0ttX3cnJHc_utfmPw-orOfLzHnU8hB3qGDMUoo4OAAYIZ3vn6SA",
+                                "refresh_token": "def50200e676a781428eb3bc78c0ac34d8c66cc9cfc3f8310e836f9baedec5719ae200e5bc855de4b361cb6105ad082f8809c89ef9defe70e1c3dda7669acb38f6ab5351567adf60cadf5e32b8fde72331a20d6aaeb9b0461d17c6a17e2c1bf2f8a3d51589e00edfc2c958d58066dd78dca69af6da330254757c59ac143735fe20c125dadbfecb76c663b9ec4e747bc430b3e612d1c2311e616355faec010455fc07afbf70d328e12749946e33a92bf9150a9d8e4278e5527f9baac155db6151068f7f03f4b22421db37c4b8955656b27219648a4aedf6e062190a1935976d6d1ff4ba16bcb818391361465580f3f695699a41623c853eaa8a8039f608f3fb3586f3a55f75f89b924603f64488af52a48540eacccb2e7278b8e1f211ce81041d5360f32a922a45d21df684d3688a75b4d5c85ad62b3755f67af044e4914e41459f56e6b71713b76441675981bc3bb9aa0fa6315cd10cd023d3862bc87702e4702b"
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/responses/Validate"
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "post": {
+                "description": "Log-out the logged user",
+                "tags": [
+                    "Authorization"
+                ],
+                "consumes": "application/json",
+                "produces": "application/json",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "success": true
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/reset-password": {
+            "post": {
+                "description": "Send an email contains reset password token to user",
+                "tags": [
+                    "Authorization"
+                ],
+                "consumes": "application/json",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "success": true
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/responses/Validate"
+                    }
+                }
+            }
+        },
+        "/api/reset-password/{token}": {
+            "put": {
+                "description": "Change user's password by passed token",
+                "tags": [
+                    "Authorization"
+                ],
+                "consumes": "application/json",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password_confirmation",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "success": true
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/responses/Validate"
+                    }
+                }
+            }
+        },
+        "/api/monthly-reports": {
+            "get": {
+                "description": "Get list Monthly Reports of group",
+                "tags": [
+                    "Monthly Reports"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "current_page": 1,
+                                "data": [
+                                    {
+                                    "id": 1,
+                                    "user": {
+                                        "name": "Group Leader"
+                                    },
+                                    "subject": "PHP",
+                                    "target_month": {
+                                        "name": "2019/07"
+                                    },
+                                    "category": {
+                                        "name": "[Backend]"
+                                    },
+                                    "reviewer": {
+                                        "name": "Group Leader"
+                                    },
+                                    "status": 3,
+                                    "link": "https://www.chatwork.com",
+                                    "start_date": "2019-05-01 00:00:00",
+                                    "end_date": "2019-05-01 00:00:00",
+                                    "estimated": "8.00",
+                                    "done": "12"
+                                    }
+                                ],
+                                "first_page_url": "http://localhost/api/monthly-reports?page=1",
+                                "from": 1,
+                                "last_page": 1,
+                                "last_page_url": "http://localhost/api/monthly-reports?page=1",
+                                "next_page_url": null,
+                                "path": "http://localhost/api/monthly-reports",
+                                "per_page": 10,
+                                "prev_page_url": null,
+                                "to": 1,
+                                "total": 1
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    }
+                }
+            },
+            "post": {
+                "description": "Create at a Monthly Report",
+                "tags": [
+                    "Monthly Reports"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "target_month_id",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "reviewer_id",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "category_id",
+                        "in": "formData",
+                        "required": true,
+                        "type":"integer"
+                    },
+                    {
+                        "name": "report_link",
+                        "in": "formData",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "status",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "title",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "in": "formData",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "date"
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "date"
+                    },
+                    {
+                        "name": "done",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "estimated_time",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "user_id": 1,
+                                "target_month": 1,
+                                "reviewer_id": 1,
+                                "category_id": 1,
+                                "report_link": "https://go.chatwork.com/",
+                                "status": 1,
+                                "title": "report",
+                                "description": "description",
+                                "start_date": "2018-12-26",
+                                "end_date": "2019-01-01",
+                                "done": "100",
+                                "estimated_time": 8.00,
+                                "updated_at": "2019-05-15 06:39:14",
+                                "created_at": "2019-05-15 06:39:14",
+                                "id": 3
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    },
+                    "404": {
+                        "$ref": "#/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/responses/Validate"
+                    }
+                }
+            }
+        },
+        "/api/monthly-reports/{monthly-report}": {
+            "get": {
+                "description": "Show detail a Monthly Report",
+                "tags": [
+                    "Monthly Reports"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "monthly-report",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "id": 1,
+                                "user": {
+                                    "name": "hieu"
+                                },
+                                "target_month_id": 1,
+                                "category_id": 1,
+                                "reviewer_id": 1,
+                                "title": "report",
+                                "status": 1,
+                                "report_link": "https://go.chatwork.com/",
+                                "description": "description",
+                                "start_date": "2019-12-11 00:00:00",
+                                "end_date": "2019-12-11 00:00:00",
+                                "estimated_time": "10",
+                                "done": "90",
+                                "comments": [
+                                    {
+                                        "id": 11,
+                                        "message": "This is comment",
+                                        "created_at": "This is comment",
+                                        "user": "hieu"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    },
+                    "404": {
+                        "$ref": "#/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/responses/Validate"
+                    }
+                }
+            },
+            "put": {
+                "description": "Update a Monthly Report",
+                "tags": [
+                    "Monthly Reports"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "monthly-report",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "id",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "target_month_id",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "reviewer_id",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "category_id",
+                        "in": "formData",
+                        "required": true,
+                        "type":"integer"
+                    },
+                    {
+                        "name": "report_link",
+                        "in": "formData",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "status",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "title",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "in": "formData",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "date"
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "date"
+                    },
+                    {
+                        "name": "done",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "estimated_time",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "success": true
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    },
+                    "404": {
+                        "$ref": "#/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/responses/Validate"
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a Monthly Report",
+                "tags": [
+                    "Monthly Reports"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "monthly-report",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "success": true
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    },
+                    "404": {
+                        "$ref": "#/responses/NotFound"
+                    }
+                }
+            }
+        },
+        "/api/profile": {
+            "get": {
+                "description": "Get user's information, which includes roles, permissions",
+                "tags": [
+                    "Profile"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "id": 1,
+                                "name": "groupleader",
+                                "email": "groupleader@gmail.com",
+                                "team_id": 1,
+                                "team": {
+                                    "name": "default",
+                                    "group_id": 1
+                                },
+                                "roles": [
+                                    {
+                                        "name": "group_leader",
+                                        "permissions": [
+                                            {
+                                                "name": "manage_team_leader"
+                                            },
+                                            {
+                                                "name": "manage_team"
+                                            },
+                                            {
+                                                "name": "manage_member"
+                                            },
+                                            {
+                                                "name": "manage_message"
+                                            },
+                                            {
+                                                "name": "manage_fund"
+                                            },
+                                            {
+                                                "name": "can_edit_group"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/profile/password": {
+            "put": {
+                "description": "Change the user's password by new one",
+                "tags": [
+                    "Profile"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "current_password",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password_confirmation",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "success": true
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    },
+                    "422": {
+                        "$ref": "#/responses/Validate"
+                    }
+                }
+            }
+        },
+        "/api/categories": {
+            "get": {
+                "description": "Get list Categories",
+                "tags": [
+                    "Categories"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "id": 1,
+                                "name": "[Backend]"
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/target-months": {
+            "get": {
+                "description": "Get list Target months",
+                "tags": [
+                    "Target Months"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": 1,
+                                    "month": "2019/01"
+                                },
+                                {
+                                    "id": 2,
+                                    "month": "2019/02"
+                                },
+                                {
+                                    "id": 3,
+                                    "month": "2019/03"
+                                },
+                                {
+                                    "id": 4,
+                                    "month": "2019/04"
+                                },
+                                {
+                                    "id": 5,
+                                    "month": "2019/05"
+                                },
+                                {
+                                    "id": 6,
+                                    "month": "2019/06"
+                                },
+                                {
+                                    "id": 7,
+                                    "month": "2019/07"
+                                },
+                                {
+                                    "id": 8,
+                                    "month": "2019/08"
+                                },
+                                {
+                                    "id": 9,
+                                    "month": "2019/09"
+                                },
+                                {
+                                    "id": 10,
+                                    "month": "2019/10"
+                                },
+                                {
+                                    "id": 11,
+                                    "month": "2019/11"
+                                },
+                                {
+                                    "id": 12,
+                                    "month": "2019/12"
+                                }
+                            ]
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/dashboard": {
+            "get": {
+                "tags": [
+                    "Non-standard"
+                ],
+                "description": "Get the analysis for showing dashboard",
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "teamTotal": 1,
+                                "teamLeaderTotal": 2,
+                                "memberTotal": 3,
+                                "monthlyReportTotal": 1
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/monthly-reports/member": {
+            "get": {
+                "tags": [
+                    "Non-standard"
+                ],
+                "description": "Get the monthly reports of user",
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "current_page": 1,
+                                "data": [
+                                    {
+                                        "id": 1,
+                                        "user": {
+                                            "name": "User's name"
+                                        },
+                                        "subject": "Subject",
+                                        "target_month": {
+                                            "name": "2019/03"
+                                        },
+                                        "category": {
+                                            "name": "[Frontend]"
+                                        },
+                                        "reviewer": {
+                                            "name": "Reviewer's name"
+                                        },
+                                        "status": 1,
+                                        "link": "https://www.google.com/",
+                                        "start_date": "2019-03-01 00:00:00",
+                                        "end_date": "2019-03-02 00:00:00",
+                                        "estimated": "16",
+                                        "done": "70"
+                                    }
+                                ],
+                                "first_page_url": "http://localhost:8000/api/monthly-reports/member?page=1",
+                                "from": 1,
+                                "last_page": 1,
+                                "last_page_url": "http://localhost:8000/api/monthly-reports/member?page=1",
+                                "next_page_url": null,
+                                "path": "http://localhost:8000/api/monthly-reports/member",
+                                "per_page": 10,
+                                "prev_page_url": null,
+                                "to": 1,
+                                "total": 1
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/monthly-reports/reviewers": {
+            "get": {
+                "tags": [
+                    "Non-standard"
+                ],
+                "description": "Get the reviewer list",
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "id": 2,
+                                "name": "QuynhNX"
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/monthly-reports/teamleader": {
+            "get": {
+                "tags": [
+                    "Non-standard"
+                ],
+                "description": "Get the user monthly reports for teamleader",
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "current_page": 1,
+                                "data": [
+                                    {
+                                        "id": 1,
+                                        "user": {
+                                            "name": "User's name"
+                                        },
+                                        "subject": "Subject",
+                                        "target_month": {
+                                            "name": "2019/03"
+                                        },
+                                        "category": {
+                                            "name": "[Frontend]"
+                                        },
+                                        "reviewer": {
+                                            "name": "Reviewer's name"
+                                        },
+                                        "status": 1,
+                                        "link": "https://www.google.com/",
+                                        "start_date": "2019-03-01 00:00:00",
+                                        "end_date": "2019-03-02 00:00:00",
+                                        "estimated": "16",
+                                        "done": "70"
+                                    }
+                                ],
+                                "first_page_url": "http://localhost:8000/api/monthly-reports/member?page=1",
+                                "from": 1,
+                                "last_page": 1,
+                                "last_page_url": "http://localhost:8000/api/monthly-reports/member?page=1",
+                                "next_page_url": null,
+                                "path": "http://localhost:8000/api/monthly-reports/member",
+                                "per_page": 10,
+                                "prev_page_url": null,
+                                "to": 1,
+                                "total": 1
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/organization-chart/{group_id}": {
+            "get": {
+                "tags": [
+                    "Non-standard"
+                ],
+                "description": "Get the analysis for showing organization chart",
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "group_id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "name": "Group 4",
+                                "children": [
+                                    {
+                                        "name": "Default",
+                                        "children": [
+                                            {
+                                                "name": "Nguyen Van Tien"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "dsds",
+                                        "children": [
+                                            {
+                                                "name": "Nguyễn Văn Tiến"
+                                            },
+                                            {
+                                                "name": "Nguyen Van Tien"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    },
+                    "404": {
+                        "$ref": "#/responses/NotFound"
+                    }
+                }
+            }
+        },
+        "/api/user/{user_id}/schedule-settings": {
+            "get": {
+                "tags": [
+                    "Non-standard"
+                ],
+                "description": "Get the schudule settings and the chatwork bot information",
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "mybot": {
+                                    "botInfo": {
+                                        "account_id": 3146474,
+                                        "room_id": 109866255,
+                                        "name": "Bot bot",
+                                        "chatwork_id": "tiennguyen98",
+                                        "organization_id": 2006512,
+                                        "organization_name": "Framgia Inc.",
+                                        "department": "Education/Human Development",
+                                        "title": "Intern PHP",
+                                        "url": "",
+                                        "introduction": "",
+                                        "mail": "nguyentien1098@gmail.com",
+                                        "tel_organization": "",
+                                        "tel_extension": "",
+                                        "tel_mobile": "0393088822",
+                                        "skype": "",
+                                        "facebook": "tiennguyensl",
+                                        "twitter": "",
+                                        "avatar_image_url": "https://appdata.chatwork.com/avatar/2910/2910188.rsz.jpg",
+                                        "login_mail": "nguyentien1098@gmail.com"
+                                    },
+                                    "roomList": [
+                                        {
+                                            "room_id": 109866255,
+                                            "name": "マイチャット",
+                                            "type": "my",
+                                            "role": "member",
+                                            "sticky": true,
+                                            "unread_num": 0,
+                                            "mention_num": 0,
+                                            "mytask_num": 0,
+                                            "message_num": 26,
+                                            "file_num": 0,
+                                            "task_num": 0,
+                                            "icon_path": "https://appdata.chatwork.com/avatar/ico_default_orange.png",
+                                            "last_update_time": 1539453464
+                                        },
+                                        {
+                                            "room_id": 82509015,
+                                            "name": "PHP Education Team",
+                                            "type": "group",
+                                            "role": "member",
+                                            "sticky": false,
+                                            "unread_num": 157,
+                                            "mention_num": 1,
+                                            "mytask_num": 0,
+                                            "message_num": 40080,
+                                            "file_num": 940,
+                                            "task_num": 11,
+                                            "icon_path": "https://appdata.chatwork.com/icon/1216/1216748.rsz.png",
+                                            "last_update_time": 1548215436
+                                        }
+                                    ]
+                                },
+                                "roomsInfo": [
+                                    {
+                                        "id": 1,
+                                        "chatwork_bot_id": 1,
+                                        "room_id": 123660082,
+                                        "created_at": null,
+                                        "updated_at": null,
+                                        "name": "New interns",
+                                        "icon_path": "https://appdata.chatwork.com/icon/ico_group.png"
+                                    }
+                                ],
+                                "chatworkBot": {
+                                    "id": 1,
+                                    "user_id": 1,
+                                    "api_key": "4ccb6fc3e3f5f3fd895e5851cd13c552",
+                                    "created_at": "2019-01-21 08:56:28",
+                                    "updated_at": "2019-01-21 08:56:28",
+                                    "name": "Bot bot",
+                                    "avatar_image_url": "https://appdata.chatwork.com/avatar/2910/2910188.rsz.jpg"
+                                },
+                                "messageTypes": [
+                                    {
+                                        "id": 1,
+                                        "type": "Happy birthday",
+                                        "created_at": "2019-01-21 03:18:11",
+                                        "updated_at": "2019-01-21 03:18:11"
+                                    },
+                                    {
+                                        "id": 2,
+                                        "type": "Daily report",
+                                        "created_at": "2019-01-21 03:18:11",
+                                        "updated_at": "2019-01-21 03:18:11"
+                                    },
+                                    {
+                                        "id": 3,
+                                        "type": "Monthly report",
+                                        "created_at": "2019-01-21 03:18:11",
+                                        "updated_at": "2019-01-21 03:18:11"
+                                    },
+                                    {
+                                        "id": 4,
+                                        "type": "Daily metting",
+                                        "created_at": "2019-01-21 03:18:11",
+                                        "updated_at": "2019-01-21 03:18:11"
+                                    },
+                                    {
+                                        "id": 5,
+                                        "type": "Weekly metting",
+                                        "created_at": "2019-01-21 03:18:11",
+                                        "updated_at": "2019-01-21 03:18:11"
+                                    },
+                                    {
+                                        "id": 6,
+                                        "type": "Weekly party",
+                                        "created_at": "2019-01-21 03:18:11",
+                                        "updated_at": "2019-01-21 03:18:11"
+                                    }
+                                ],
+                                "frequencies": [
+                                    {
+                                        "id": 1,
+                                        "name": "Daily",
+                                        "created_at": "2019-01-21 03:18:11",
+                                        "updated_at": "2019-01-21 03:18:11"
+                                    },
+                                    {
+                                        "id": 2,
+                                        "name": "Weekly",
+                                        "created_at": "2019-01-21 03:18:11",
+                                        "updated_at": "2019-01-21 03:18:11"
+                                    },
+                                    {
+                                        "id": 3,
+                                        "name": "Monthly",
+                                        "created_at": "2019-01-21 03:18:11",
+                                        "updated_at": "2019-01-21 03:18:11"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    },
+                    "404": {
+                        "$ref": "#/responses/NotFound"
+                    }
+                }
+            }
+        },
+        "/api/chatwork-bots/check-api-key/{api-key}": {
+            "get": {
+                "tags": [
+                    "Non-standard"
+                ],
+                "description": "Get chatwork bot information",
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "api-key",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "mybot": {
+                                    "botInfo": {
+                                        "account_id": 3423643,
+                                        "room_id": 125492764,
+                                        "name": "G4Test",
+                                        "chatwork_id": "",
+                                        "organization_id": 2231450,
+                                        "organization_name": "",
+                                        "department": "",
+                                        "title": "",
+                                        "url": "",
+                                        "introduction": "",
+                                        "mail": "",
+                                        "tel_organization": "",
+                                        "tel_extension": "",
+                                        "tel_mobile": "",
+                                        "skype": "",
+                                        "facebook": "",
+                                        "twitter": "",
+                                        "avatar_image_url": "https://appdata.chatwork.com/avatar/2787/2787794.rsz.jpg",
+                                        "login_mail": "gmtinternal@gmail.com"
+                                    },
+                                    "roomList": [
+                                        {
+                                            "room_id": 125492764,
+                                            "name": "マイチャット",
+                                            "type": "my",
+                                            "role": "member",
+                                            "sticky": true,
+                                            "unread_num": 0,
+                                            "mention_num": 0,
+                                            "mytask_num": 0,
+                                            "message_num": 1,
+                                            "file_num": 0,
+                                            "task_num": 0,
+                                            "icon_path": "https://appdata.chatwork.com/avatar/ico_default_green.png",
+                                            "last_update_time": 1539136671
+                                        },
+                                        {
+                                            "room_id": 126551318,
+                                            "name": "[test] GMTool",
+                                            "type": "group",
+                                            "role": "admin",
+                                            "sticky": false,
+                                            "unread_num": 0,
+                                            "mention_num": 0,
+                                            "mytask_num": 0,
+                                            "message_num": 62,
+                                            "file_num": 0,
+                                            "task_num": 0,
+                                            "icon_path": "https://appdata.chatwork.com/icon/ico_music.png",
+                                            "last_update_time": 1543130702
+                                        },
+                                        {
+                                            "room_id": 125626227,
+                                            "name": "Nguyen Thi Quynh (94)",
+                                            "type": "direct",
+                                            "role": "member",
+                                            "sticky": false,
+                                            "unread_num": 0,
+                                            "mention_num": 0,
+                                            "mytask_num": 0,
+                                            "message_num": 19,
+                                            "file_num": 0,
+                                            "task_num": 0,
+                                            "icon_path": "https://appdata.chatwork.com/avatar/1029/1029959.rsz.jpg",
+                                            "last_update_time": 1540349601
+                                        },
+                                        {
+                                            "room_id": 126453944,
+                                            "name": "Chatwork Support",
+                                            "type": "direct",
+                                            "role": "member",
+                                            "sticky": false,
+                                            "unread_num": 0,
+                                            "mention_num": 0,
+                                            "mytask_num": 0,
+                                            "message_num": 1,
+                                            "file_num": 0,
+                                            "task_num": 0,
+                                            "icon_path": "https://appdata.chatwork.com/avatar/2872/2872148.rsz.png",
+                                            "last_update_time": 1540262272
+                                        },
+                                        {
+                                            "room_id": 125626196,
+                                            "name": "Hoang Thi Tuan Dung",
+                                            "type": "direct",
+                                            "role": "member",
+                                            "sticky": false,
+                                            "unread_num": 0,
+                                            "mention_num": 0,
+                                            "mytask_num": 0,
+                                            "message_num": 1,
+                                            "file_num": 0,
+                                            "task_num": 0,
+                                            "icon_path": "https://appdata.chatwork.com/avatar/3081/3081657.png",
+                                            "last_update_time": 1539240462
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    },
+                    "404": {
+                        "$ref": "#/responses/NotFound"
+                    }
+                }
+            }
+        },
+        "/api/chatwork-bots/{chatwork_bot}": {
+            "get": {
+                "description": "Show detail a Chatwork Bot",
+                "tags": [
+                    "Chatwork Bots"
+                ],
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "chatwork_bot",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "mybot": {
+                                        "botInfo": {
+                                            "account_id": 2751578,
+                                            "room_id": 90037267,
+                                            "name": "Nguyen Thi Bich Ngoc",
+                                            "chatwork_id": "",
+                                            "organization_id": 1675257,
+                                            "organization_name": "Framgia Inc",
+                                            "department": "Human Development/ Education",
+                                            "title": "Open PHP",
+                                            "url": "",
+                                            "introduction": "",
+                                            "mail": "nguyen.thi.bich.ngoc@framgia.com",
+                                            "tel_organization": "0389887812",
+                                            "tel_extension": "",
+                                            "tel_mobile": "",
+                                            "skype": "",
+                                            "facebook": "Ngoc Nguyen",
+                                            "twitter": "",
+                                            "avatar_image_url": "https://appdata.chatwork.com/avatar/2881/2881053.png",
+                                            "login_mail": "nguyenngoc.hust.97@gmail.com"
+                                        },
+                                        "roomList": [
+                                            {
+                                                "room_id": 5126753,
+                                                "name": "Sun*(Hanoi) All",
+                                                "type": "group",
+                                                "role": "member",
+                                                "sticky": false,
+                                                "unread_num": 1238,
+                                                "mention_num": 91,
+                                                "mytask_num": 0,
+                                                "message_num": 142385,
+                                                "file_num": 980,
+                                                "task_num": 8,
+                                                "icon_path": "https://appdata.chatwork.com/icon/1407/1407311.rsz.png",
+                                                "last_update_time": 1558068031
+                                            },
+                                            {
+                                                "room_id": 19560135,
+                                                "name": "[bo] Welcome new Members",
+                                                "type": "group",
+                                                "role": "member",
+                                                "sticky": false,
+                                                "unread_num": 701,
+                                                "mention_num": 0,
+                                                "mytask_num": 0,
+                                                "message_num": 14618,
+                                                "file_num": 129,
+                                                "task_num": 1,
+                                                "icon_path": "https://appdata.chatwork.com/icon/164/164447.rsz.png",
+                                                "last_update_time": 1558063302
+                                            }
+                                        ]
+                                    },
+                                    "roomsInfo": [],
+                                    "chatworkBot": {
+                                        "id": 5,
+                                        "user_id": 1,
+                                        "api_key": "7c24d06b7034d96682d3b74193db5109",
+                                        "created_at": "2019-05-17 03:17:21",
+                                        "updated_at": "2019-05-17 03:17:21",
+                                        "name": "Nguyen Thi Bich Ngoc",
+                                        "avatar_image_url": "https://appdata.chatwork.com/avatar/2881/2881053.png"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    },
+                    "404": {
+                        "$ref": "#/responses/NotFound"
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a Chatwork Bots",
+                "tags": [
+                    "Chatwork Bots"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "chatwork_bot",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": [
+                                "true"
+                            ]
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    },
+                    "404": {
+                        "$ref": "#/responses/NotFound"
+                    }
+                }
+            }
+        },
+        "/api/members": {
+            "get": {
+                "description": "Get the listing of members in a group",
+                "tags": [
+                    "Members"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "current_page": 1,
+                                "data": [
+                                    {
+                                        "id": 1,
+                                        "name": "groupleader",
+                                        "email": "groupleader@framgia.com",
+                                        "role": {
+                                            "name": "group_leader"
+                                        },
+                                        "team": {
+                                            "name": "Avenger"
+                                        }
+                                    },
+                                    {
+                                        "id": 2,
+                                        "name": "Member",
+                                        "email": "member@framgia.com",
+                                        "role": {
+                                            "name": "member"
+                                        },
+                                        "team": {
+                                            "name": "Avenger"
+                                        }
+                                    }
+                                ],
+                                "first_page_url": "http://localhost:8000/api/members?page=1",
+                                "from": 1,
+                                "last_page": 1,
+                                "last_page_url": "http://localhost:8000/api/members?page=1",
+                                "next_page_url": null,
+                                "path": "http://localhost:8000/api/members",
+                                "per_page": 15,
+                                "prev_page_url": null,
+                                "to": 2,
+                                "total": 2
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a user by requested data",
+                "tags": [
+                    "Members"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "team_id",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "role_id",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "name": "Member",
+                                "email": "member@framgia.com",
+                                "team_id": 1,
+                                "updated_at": "2019-01-24 01:40:14",
+                                "created_at": "2019-01-24 01:40:14",
+                                "id": 1,
+                                "roles": [
+                                    {
+                                        "id": 1,
+                                        "name": "member",
+                                        "guard_name": "web",
+                                        "created_at": "2019-01-21 03:18:10",
+                                        "updated_at": "2019-01-21 03:18:10",
+                                        "pivot": {
+                                            "model_id": 5,
+                                            "role_id": 1,
+                                            "model_type": "Framgia\\Gmt\\Models\\User"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    },
+                    "404": {
+                        "$ref": "#/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/responses/Validate"
+                    }
+                }
+            }
+        },
+        "/api/members/{user_id}": {
+            "put": {
+                "description": "Update a user with requested data",
+                "tags": [
+                    "Members"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "team_id",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "role_id",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "id": 1,
+                                "name": "Member2",
+                                "email": "member2@framgia.com",
+                                "created_at": "2019-01-24 01:40:14",
+                                "updated_at": "2019-01-24 01:54:04",
+                                "group_id": null,
+                                "team_id": 2,
+                                "employee_code": null,
+                                "gender": null,
+                                "birthday": null,
+                                "personal_email": null,
+                                "phone_number": null,
+                                "avatar": null,
+                                "position": null,
+                                "staff_type": null,
+                                "current_address": null,
+                                "home_town": null,
+                                "national": null,
+                                "start_probation_date": null,
+                                "end_probation_date": null,
+                                "contract_date": null,
+                                "workspaces": null,
+                                "team": {
+                                    "id": 1,
+                                    "name": "Default",
+                                    "group_id": 1,
+                                    "description": "The default group team could not be edited or deleted.",
+                                    "created_at": "2019-01-21 03:25:24",
+                                    "updated_at": "2019-01-21 03:25:24",
+                                    "mutable": false,
+                                    "leader": []
+                                },
+                                "roles": [
+                                    {
+                                        "id": 2,
+                                        "name": "team_leader",
+                                        "guard_name": "web",
+                                        "created_at": "2019-01-21 03:18:10",
+                                        "updated_at": "2019-01-21 03:18:10",
+                                        "pivot": {
+                                            "model_id": 5,
+                                            "role_id": 2,
+                                            "model_type": "Framgia\\Gmt\\Models\\User"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    },
+                    "404": {
+                        "$ref": "#/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/responses/Validate"
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a user by the passed ID",
+                "tags": [
+                    "Members"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "success": true
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    },
+                    "404": {
+                        "$ref": "#/responses/NotFound"
+                    }
+                }
+            },
+            "get": {
+                "description": "Get a user information",
+                "tags": [
+                    "Members"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "id": 1,
+                                "name": "Member",
+                                "email": "member@gmail.com",
+                                "role_id": 1,
+                                "team_id": 1
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    },
+                    "404": {
+                        "$ref": "#/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/responses/Validate"
+                    }
+                }
+            }
+        },
+        "/api/teams": {
+            "get": {
+                "description": "Get list Teams",
+                "tags": [
+                    "Teams"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": 1,
+                                    "name": "Default",
+                                    "description": "The default group team could not be edited or deleted.",
+                                    "mutable": false,
+                                    "leader": null
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "IRON MAN",
+                                    "description": "Lead by Nguyen Xuan Huong",
+                                    "mutable": true,
+                                    "leader": {
+                                        "id": 3,
+                                        "name": "Nguyen Xuan Huong",
+                                        "email": "nguyen.xuan.huong@framgia.com",
+                                        "created_at": "2019-05-09 04:34:58",
+                                        "updated_at": "2019-05-09 04:34:58",
+                                        "team_id": 2,
+                                        "employee_code": null,
+                                        "gender": null,
+                                        "birthday": null,
+                                        "personal_email": null,
+                                        "phone_number": null,
+                                        "avatar": null,
+                                        "position": null,
+                                        "staff_type": null,
+                                        "current_address": null,
+                                        "home_town": null,
+                                        "national": null,
+                                        "start_probation_date": null,
+                                        "end_probation_date": null,
+                                        "contract_date": null,
+                                        "workspaces": null
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    }
+                }
+            },
+            "post": {
+                "description": "Create at a Teams",
+                "tags": [
+                    "Teams"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "group_id",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "description",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mutable",
+                        "in": "formData",
+                        "required": false,
+                        "type": "boolean"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "name": "Falcon",
+                                    "group_id": 1,
+                                    "description": "Avenger Group Team",
+                                    "mutable": true,
+                                    "updated_at": "2019-05-17 06:04:31",
+                                    "created_at": "2019-05-17 06:04:31",
+                                    "id": 4,
+                                    "leader": null
+                                }
+                            ]
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    },
+                    "404": {
+                        "$ref": "#/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/responses/Validate"
+                    }
+                }
+            }
+        },
+        "/api/teams/{team}": {
+            "get": {
+                "description": "Show detail a Team",
+                "tags": [
+                    "Teams"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "team",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": 1,
+                                    "name": "Default",
+                                    "group_id": 1,
+                                    "description": "The default group team could not be edited or deleted.",
+                                    "created_at": "2019-05-09 04:24:51",
+                                    "updated_at": "2019-05-09 04:24:51",
+                                    "mutable": false,
+                                    "leader": null
+                                }
+                            ]
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    },
+                    "404": {
+                        "$ref": "#/responses/NotFound"
+                    }
+                }
+            },
+            "put": {
+                "description": "Update a Team",
+                "tags": [
+                    "Teams"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "team",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "group_id",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "description",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "id": 4,
+                                    "name": "Thanos",
+                                    "group_id": 1,
+                                    "description": "Thanos Team",
+                                    "created_at": "2019-05-17 06:04:31",
+                                    "updated_at": "2019-05-17 06:30:27",
+                                    "mutable": true,
+                                    "leader": null
+                                }
+                            ]
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    },
+                    "404": {
+                        "$ref": "#/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/responses/Validate"
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a Team",
+                "tags": [
+                    "Teams"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "team",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "success": true
+                                }
+                            ]
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    },
+                    "404": {
+                        "$ref": "#/responses/NotFound"
+                    }
+                }
+            }
+        },
+        "/api/schedule-settings": {
+            "get": {
+                "description": "Get the schedule setting list for authenticated user",
+                "tags": [
+                    "Schedule Settings"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "current_page": 1,
+                                "data": [
+                                    {
+                                        "id": 2,
+                                        "message_id": 2,
+                                        "room_id": 3,
+                                        "recurrence": 0,
+                                        "frequency_id": null,
+                                        "start_date": "2019-01-24",
+                                        "time": "00:23:00",
+                                        "end_date": null,
+                                        "days": null,
+                                        "these_days": null,
+                                        "these_months": null,
+                                        "times": null,
+                                        "do_times": null,
+                                        "created_at": "2019-01-24 03:28:40",
+                                        "updated_at": "2019-01-24 03:28:40",
+                                        "room_name": "New interns",
+                                        "room_icon": "https://appdata.chatwork.com/icon/ico_group.png",
+                                        "message": "SDSADSADSDS",
+                                        "frequency": null,
+                                        "message_type": "Happy birthday"
+                                    }
+                                ],
+                                "first_page_url": "http://localhost:8000/api/schedule-settings?page=1",
+                                "from": 1,
+                                "last_page": 1,
+                                "last_page_url": "http://localhost:8000/api/schedule-settings?page=1",
+                                "next_page_url": null,
+                                "path": "http://localhost:8000/api/schedule-settings",
+                                "per_page": 10,
+                                "prev_page_url": null,
+                                "to": 1,
+                                "total": 1
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a new schedule setting",
+                "tags": [
+                    "Schedule Settings"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "days",
+                        "in": "formData",
+                        "required": true,
+                        "type": "array",
+                        "items": {}
+                    },
+                    {
+                        "name": "doTimes",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "date"
+                    },
+                    {
+                        "name": "frequency",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "message",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "recurrence",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "roomId",
+                        "in": "formData",
+                        "required": true,
+                        "type": "array",
+                        "items": {}
+                    },
+                    {
+                        "name": "startDate",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "date"
+                    },
+                    {
+                        "name": "theseDays",
+                        "in": "formData",
+                        "required": true,
+                        "type": "array",
+                        "items": {}
+                    },
+                    {
+                        "name": "theseMonths",
+                        "in": "formData",
+                        "required": true,
+                        "type": "array",
+                        "items": {}
+                    },
+                    {
+                        "name": "time",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "time"
+                    },
+                    {
+                        "name": "times",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "botId",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "message_id": 9,
+                                "room_id": 20,
+                                "recurrence": 1,
+                                "frequency_id": 3,
+                                "start_date": "2019/01/23",
+                                "time": "11:11:00",
+                                "end_date": "2019/01/24",
+                                "times": 12,
+                                "these_days": null,
+                                "these_months": "8|1|7",
+                                "days": "4|1",
+                                "do_times": 1,
+                                "updated_at": "2019-01-24 03:44:42",
+                                "created_at": "2019-01-24 03:44:42",
+                                "id": 8
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    },
+                    "404": {
+                        "$ref": "#/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/responses/Validate"
+                    }
+                }
+            }
+        },
+        "/api/schedule-settings/{schedule_setting}": {
+            "delete": {
+                "description": "Delete a schedule setting",
+                "tags": [
+                    "Schedule Settings"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "schedule_setting",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "success": true
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    },
+                    "404": {
+                        "$ref": "#/responses/NotFound"
+                    }
+                }
+            },
+            "get": {
+                "description": "Get a new schedule setting",
+                "tags": [
+                    "Schedule Settings"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "schedule_setting",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": {
+                                "message_id": 9,
+                                "room_id": 20,
+                                "recurrence": 1,
+                                "frequency_id": 3,
+                                "start_date": "2019/01/23",
+                                "time": "11:11:00",
+                                "end_date": "2019/01/24",
+                                "times": 12,
+                                "these_days": null,
+                                "these_months": "8|1|7",
+                                "days": "4|1",
+                                "do_times": 1,
+                                "updated_at": "2019-01-24 03:44:42",
+                                "created_at": "2019-01-24 03:44:42",
+                                "id": 8
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    },
+                    "404": {
+                        "$ref": "#/responses/NotFound"
+                    }
+                }
+            }
+        },
+        "/api/comments": {
+            "post": {
+                "description": "Create at a Comment",
+                "tags": [
+                    "Comments"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "monthly_report_id",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "message",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "monthly_report_id": 1,
+                                    "message": "This is comment",
+                                    "user_id": 1,
+                                    "updated_at": "2019-12-11 05:20:37",
+                                    "created_at": "2019-12-11 05:20:37",
+                                    "id": 10
+                                }
+                            ]
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    },
+                    "404": {
+                        "$ref": "#/responses/NotFound"
+                    },
+                    "422": {
+                        "$ref": "#/responses/Validate"
+                    }
+                }
+            }
+        },
+        "/api/comments/{comment}": {
+            "delete": {
+                "description": "Delete a Comment",
+                "tags": [
+                    "Comments"
+                ],
+                "consumes": "application/json",
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "comment",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "examples": {
+                            "application/json": [
+                                {
+                                    "success": true
+                                }
+                            ]
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/responses/Unauthorized"
+                    },
+                    "404": {
+                        "$ref": "#/responses/NotFound"
+                    }
+                }
+            }
+        }
+    },
+    "responses": {
+        "Validate": {
+            "description": "The given data was invalid"
+        },
+        "Unauthorized": {
+            "description": "Unauthenticated"
+        },
+        "NotFound": {
+            "description": "Not Found"
+        }
+    }
+}

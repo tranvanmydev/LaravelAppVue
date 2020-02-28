@@ -30,6 +30,17 @@ mix.js('resources/assets/client/js/app.js', 'public/client/js')
 // Framework 7
 mix.copy('node_modules/framework7/css/framework7.bundle.min.css', 'public/client/css/fw7/framework7.bundle.min.css');
 
+mix.copyDirectory([
+    'node_modules/swagger-ui-dist/swagger-ui-bundle.js',
+    'node_modules/swagger-ui-dist/swagger-ui.css',
+        'node_modules/swagger-ui-dist/favicon-32x32.png',
+    'node_modules/swagger-ui-dist/favicon-16x16.png',
+    'node_modules/swagger-ui-dist/swagger-ui-standalone-preset.js',
+    'node_modules/swagger-ui-dist/swagger-ui-standalone-preset.js.map',
+    'node_modules/swagger-ui-dist/swagger-ui.css.map',
+        'node_modules/swagger-ui-dist/swagger-ui-bundle.js.map',
+   ], 'public/swagger');
+
 mix.version();
 
 mix.disableNotifications();

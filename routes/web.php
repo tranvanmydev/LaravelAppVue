@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('/get-doc-api', 'HomeController@getDocAPI');
+
 Route::any('{all}', function () {
     return view('client.index');
 })->where(['all' => '.*']);
