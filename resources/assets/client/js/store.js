@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import * as Cookies from 'js-cookie'
+import * as Cookies from 'js-cookie';
 import config from '*/config';
 import storeHome from '*/components/home/store';
 import createPersistedState from 'vuex-persistedstate';

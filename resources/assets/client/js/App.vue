@@ -10,7 +10,7 @@ import AboutPage from '*/components/About.vue';
 import LoginPage from '*/components/Login.vue';
 
 export default {
-    name: "App",
+    name: 'App',
     data() {
         return {
             // app params
@@ -19,20 +19,20 @@ export default {
                 id: 'com.myapp.test',
                 // specify routes for app
                 routes: [{
-                        path: '/',
-                        component: LoginPage,
-                    },
-                    {
-                        path: '/about/',
-                        component: AboutPage,
-                    },
-                    {
-                        path: '/home/',
-                        component: HomePage,
-                    },
+                    path: '/',
+                    component: LoginPage,
+                },
+                {
+                    path: '/about/',
+                    component: AboutPage,
+                },
+                {
+                    path: '/home/',
+                    component: HomePage,
+                },
                 ],
             }
         };
     },
-}
+};
 </script>

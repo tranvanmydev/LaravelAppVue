@@ -21,23 +21,23 @@ export default {
     data() {
         return {
             items: [{
-                    title: 'About',
-                    author: 'Beatles',
-                    cover: 'https://cdn.framework7.io/placeholder/abstract-88x88-1.jpg',
-                    link: '/about/'
-                },
-                {
-                    title: 'Message Chat',
-                    author: 'Queen',
-                    cover: 'https://cdn.framework7.io/placeholder/abstract-88x88-2.jpg',
-                    link: '/login/'
-                },
-                {
-                    title: 'Billie Jean',
-                    author: 'Michael Jackson',
-                    cover: 'https://cdn.framework7.io/placeholder/abstract-88x88-3.jpg',
-                    link: '/about/'
-                },
+                title: 'About',
+                author: 'Beatles',
+                cover: 'https://cdn.framework7.io/placeholder/abstract-88x88-1.jpg',
+                link: '/about/'
+            },
+            {
+                title: 'Message Chat',
+                author: 'Queen',
+                cover: 'https://cdn.framework7.io/placeholder/abstract-88x88-2.jpg',
+                link: '/login/'
+            },
+            {
+                title: 'Billie Jean',
+                author: 'Michael Jackson',
+                cover: 'https://cdn.framework7.io/placeholder/abstract-88x88-3.jpg',
+                link: '/about/'
+            },
             ],
             songs: ['Yellow Submarine', 'Don\'t Stop Me Now', 'Billie Jean', 'Californication'],
             authors: ['Beatles', 'Queen', 'Michael Jackson', 'Red Hot Chili Peppers'],
